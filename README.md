@@ -1,7 +1,6 @@
 This project deals with an interactive webtool that lets anyone to explore adversarial attacks by dynamically updating the classification scores and Class Activation Map (CAM) heatmap visualization of an input image as one tunes the strength of perturbation (epsilon in Fast Gradient Sign Method) applied to generate the adversarial example, all rendered in real-time. Our image classification architecture uses MobileNetV1 as backbone and gradient calculations for depthwise convolution with respect to the input image. You can now upload your own images and animate the CAM differential with different epsilon multipliers on-demand.
 
 The JavaScript webtool is built with a TensorFlow.js backend and a React frontend referencing open source components.
-//testing
 
 ## How to run the program?
 
