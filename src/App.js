@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 
 // UI imports
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {AppBar} from 'material-ui';
+import { AppBar } from 'material-ui';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {blueGrey700, teal600, tealA700, red800} from 'material-ui/styles/colors';
+import { blueGrey700, teal600, tealA700, red800 } from 'material-ui/styles/colors';
 
 // Tools
 import CAMTool from './tools/CAMTool.js';
 
 // Explanations
-import {IntroExplanation,
-        CAMExplanation,
-        DeepDreamExplanation} from './explanations/Explanations.js'
+import {
+  IntroExplanation,
+  CAMExplanation,
+  DeepDreamExplanation
+} from './explanations/Explanations.js'
 
 
 class App extends Component {
@@ -51,15 +53,15 @@ class App extends Component {
         </div>
 
         <div className="Explanation-intro">
-          <IntroExplanation setCroppedImage={this.setCroppedImage}/>
+          <IntroExplanation setCroppedImage={this.setCroppedImage} />
         </div>
 
         <div className="toolBox">
-          <CAMTool onRef={ref => (this.child = ref)} srcImage={this.state.image} attackDisplays={this.state.attackDisplays}/>
+          <CAMTool onRef={ref => (this.child = ref)} srcImage={this.state.image} attackDisplays={this.state.attackDisplays} />
         </div>
 
         <div className="Explanation-center">
-          <DeepDreamExplanation/>
+          <DeepDreamExplanation />
         </div>
 
       </MuiThemeProvider>
