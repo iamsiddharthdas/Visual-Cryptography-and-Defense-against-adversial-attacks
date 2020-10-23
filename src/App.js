@@ -41,8 +41,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
-        <AppBar title="Visualizing Adversial Attacks"></AppBar>
-
+        <AppBar title="Online Visualization of Adversial Attacks"></AppBar>
         <div className="banner-cover" id="banner">
           <div className="Page-intro-title">
             <span class="advis-shine"> Visualizing Adversial Attacks </span><br />
