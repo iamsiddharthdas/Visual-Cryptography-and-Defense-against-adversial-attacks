@@ -39,18 +39,14 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={this.muiTheme}>
-        <AppBar title="AdVis.js | &nbsp; Visualizing Adversarial Attacks"></AppBar>
+        <AppBar title="Visualizing Adversial Attacks"></AppBar>
 
         <div className="banner-cover" id="banner">
           <div className="Page-intro-title">
-            <span class="advis-shine">AdVis.js</span><br />
-            Exploring Fast Gradient Sign Method
+            <span class="advis-shine"> Visualizing Adversial Attacks </span><br />
           </div>
           <div className="Page-intro-description">
             Explore Adversarial Attacks with visual interactive tools. <br />
-          </div>
-          <div className="Page-intro-footer">
-            Advanced Computer Vision @ Georgia Tech 
           </div>
         </div>
 

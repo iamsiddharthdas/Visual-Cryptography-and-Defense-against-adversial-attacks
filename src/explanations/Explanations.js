@@ -22,8 +22,8 @@ export class IntroExplanation extends Component {
         y: 25,
         aspect: 1 / 1,
         width: 227,
-      }, 
-      image.width / image.height), 
+      },
+      image.width / image.height),
       image: image,
     });
   }
@@ -38,11 +38,11 @@ export class IntroExplanation extends Component {
             src: reader.result,
           });
 
-          let parent = this;          
+          let parent = this;
           let image = new Image();
           image.src = reader.result;
           image.onload = function() {
-            // cache raw image size here 
+            // cache raw image size here
             parent.setState({
               origWidth: image.width,
               origHeight: image.height
@@ -70,7 +70,7 @@ export class IntroExplanation extends Component {
     canvas.height = this.state.origHeight;
     const ctx = canvas.getContext('2d');
 
-    // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) API: 
+    // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight) API:
     // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
     ctx.drawImage(
       image,
@@ -95,7 +95,7 @@ export class IntroExplanation extends Component {
       <div className="Explanation-center">
         <h3>How can we detect an adversarial example?</h3>
         <p>
-          When you see a corrupted image of, let's say, a panda - you recognize it. Probably by the colorful noise. But for the machine it's not a noisy photo of a panda, it's a chihuahua. And it's so sure about it, that it doesn't make sense to question its own decisions. <br /><br /><strong>AdVis.js</strong> lets you explore <em>adversarial attacks</em> by animating the classification scores and CAM heatmap visualization as you tune the strength of perturbation applied in real-time. Try changing the epsilon value via the slider below! 
+          When you see a corrupted image of, let's say, a panda - you recognize it. Probably by the colorful noise. But for the machine it's not a noisy photo of a panda, it's a chihuahua. And it's so sure about it, that it doesn't make sense to question its own decisions. <br /><br />Our project lets you explore adversarial attacks by animating the classification scores and CAM heatmap visualization as you tune the strength of perturbation applied in real-time. Try changing the epsilon value via the slider below!
         </p>
       </div>
 
@@ -112,7 +112,7 @@ export class IntroExplanation extends Component {
                   <input style={{marginTop: "0px", marginBottom: "0px", display: "inline"}} onChange={this.onSelectFile} type="file" id="files" name="files[]" multiple/>
 
                   {this.state.src && (
-                  <div> 
+                  <div>
                     <ReactCrop
                       src={this.state.src}
                       crop={this.state.crop}
@@ -121,11 +121,11 @@ export class IntroExplanation extends Component {
                       style={{marginTop: "6px", marginBottom: "4px", maxHeight: "150px"}}
                     />
                     <br />
-                    <RaisedButton 
-                      label="Crop" 
-                      secondary={true} 
+                    <RaisedButton
+                      label="Crop"
+                      secondary={true}
                       onClick={this.onCropClicked}
-                    /> 
+                    />
                     <br />
                   </div>
                 )}
@@ -139,7 +139,7 @@ export class IntroExplanation extends Component {
 
       <Divider />
       <div className="Explanation-center">
-        <p> <strong>Advis.js</strong> is the first to bring adversarial example generation and dynamic visualization to the browser for real-time exploration, and we invite developers and researchers to contribute to our growing library of attack vectors. </p>
+        <p> Our aim is to bring adversarial example generation and dynamic visualization to the browser for real-time exploration </p>
       </div>
       </div>
     );
@@ -154,7 +154,7 @@ export class CAMExplanation extends Component {
   render() {
     return (
       <div style={{fontFamily: "Roboto"}}>
-        
+
       </div>
     );
   }
@@ -170,25 +170,25 @@ export class DeepDreamExplanation extends Component {
       <div style={{fontFamily: "Roboto"}}>
         <h3> Nuts and bolts of an attack </h3>
         <img src={window.location.origin + '/fgsm_illus.png'} style={{width: "100%", bottom:"25px", right:"15px"}}/> <br />
-        <p>Adversarial attacks are performed by perturbing the input image to a classifier such that it misclassifies the input with high confidence while the modification is imperceptible to humans. A canonical gradient-based attack, called the Fast Gradient Sign method (FGSM), is an effective technique to quickly generate image perturbations and apply them to produce adversarial examples. Through our testing, this method is transferrable to a range of image classification models and correlates with graph-based visual saliency <a href={'https://papers.nips.cc/paper/3095-graph-based-visual-saliency.pdf'}>[1]</a> in a novel way <a href={'http://jlin.xyz/papers/advis_poster_v2.pdf'}>[2]</a>. 
+        <p>Adversarial attacks are performed by perturbing the input image to a classifier such that it misclassifies the input with high confidence while the modification is imperceptible to humans. A canonical gradient-based attack, called the Fast Gradient Sign method (FGSM), is an effective technique to quickly generate image perturbations and apply them to produce adversarial examples. Through our testing, this method is transferrable to a range of image classification models and correlates with graph-based visual saliency <a href={'https://papers.nips.cc/paper/3095-graph-based-visual-saliency.pdf'}>[1]</a> in a novel way <a href={'http://jlin.xyz/papers/advis_poster_v2.pdf'}>[2]</a>.
 
-          <br /><br />Under the manifold assumption, the objective of an adversarial attack is to "fool" a neural network by moving an input example across its classification boundary in its image manifold. FGSM works by maximizing the activation of the classification network towards an incorrect class by superimposing an adversarial perturbation subject to the max norm constraint that its sum is less than the allowance for precision rounding of bit-limited range storage format. <br /><br /> 
+          <br /><br />Under the manifold assumption, the objective of an adversarial attack is to "fool" a neural network by moving an input example across its classification boundary in its image manifold. FGSM works by maximizing the activation of the classification network towards an incorrect class by superimposing an adversarial perturbation subject to the max norm constraint that its sum is less than the allowance for precision rounding of bit-limited range storage format. <br /><br />
 
            <img src={window.location.origin + '/fgsm_eq.png'} style={{width: "100%", bottom:"25px", right:"15px"}}/> <br /><br />
 
             This is because the precision of an individual input feature is limited. For example, digital images often use only 8 bits per pixel so they discard all information below 1/255 of the dynamic range. Because the precision of the features is limited, it is not rational for the classifier to respond differently to an input x than to an adversarial input x˜ = x + η if every element of the perturbation η is smaller than the precision of the features.
 
-         
+
           A key parameter to this method is epsilon, which determines the amount of perturbation applied.
         </p>
 
         <h3> Computation Graph for backprop gradients ∂ <sup>loss</sup>&frasl;<sub>image</sub> with TensorFlow.js </h3>
         <p>
-    
+
           <pre><code>
-          <strong>// Get top predicted class index from IMAGENET_CLASSES</strong> 
+          <strong>// Get top predicted class index from IMAGENET_CLASSES</strong>
           <br />
-          var pred = predictions[0].className;  <strong>// giant panda, etc.</strong> 
+          var pred = predictions[0].className;  <strong>// giant panda, etc.</strong>
           <br />
           let tbuffer = dl.buffer([1000]);  <br />
           tbuffer.set(1, key);  <br />
@@ -202,7 +202,7 @@ export class DeepDreamExplanation extends Component {
           var _im = dl.environment.ENV.engine.gradients(_grad_func, [img3]);  <br />
           let im_gradients = _im.grads[0];  <br />
           <br />
-          <strong>// Scale gradient sign and concat 0s α-channel with 3-channel perturbations </strong> 
+          <strong>// Scale gradient sign and concat 0s α-channel with 3-channel perturbations </strong>
           <br />
           let perturbations = scale_grad(grads, eps); <br />
           const zeroes = new Uint8Array(51529); <br />
@@ -219,8 +219,8 @@ export class DeepDreamExplanation extends Component {
 
         <h3> Robust Adversarial Example</h3>
         <p>
-          This implementation is currently in the works. 
-        </p>        
+          This implementation is currently in the works.
+        </p>
 
         <h3> Class Activation Maximization</h3>
         <p>
