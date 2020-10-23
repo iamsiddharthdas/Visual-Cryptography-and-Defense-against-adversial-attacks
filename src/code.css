@@ -8,7 +8,7 @@ pre {
   font-family: 'Droid Sans Mono';
   font-size: 14px;
   display: block; padding: 0.5em;
-  background: #F0F0F0;
+  background: #c7cbbe;
 }
 
 
@@ -45,7 +45,7 @@ pre .tex .command,
 pre .tex .special,
 pre .erlang_repl .function_or_atom,
 pre .markdown .header {
-  color: #800;
+  color: #770;
 }
 
 pre .comment,
@@ -54,7 +54,7 @@ pre .template_comment,
 pre .diff .header,
 pre .chunk,
 pre .markdown .blockquote {
-  color: #888;
+  color: #c3c3c3;
 }
 
 pre .number,
@@ -67,7 +67,7 @@ pre .go .constant,
 pre .change,
 pre .markdown .bullet,
 pre .markdown .link_url {
-  color: #080;
+  color: #a13d2d;
 }
 
 pre .label,
@@ -94,7 +94,7 @@ pre .markdown .link_label,
 pre .vhdl .attribute,
 pre .clojure .attribute,
 pre .coffeescript .property {
-  color: #88F
+  color: #00a693
 }
 
 pre .keyword,
