@@ -5,16 +5,27 @@ import ReactCrop, {makeAspectCrop} from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import '../code.css';
 
+/**
+ * Component: IntroExplanation
+ * Description: Allows users to upload and crop an image, with introductory text explaining adversarial examples.
+ */
+
 export class IntroExplanation extends Component {
   constructor(props) {
     super(props);
 
+    // Initial state for image source, crop, and original image dimensions
     this.state = {
       src: null,
       crop: null
     };
   }
 
+  /**
+   * Handler: onImageLoaded
+   * Triggered when the image is loaded into the crop component.
+   * Initializes crop settings and caches image reference.
+   */
   onImageLoaded = image => {
     this.setState({
       crop: makeAspectCrop({
@@ -28,6 +39,11 @@ export class IntroExplanation extends Component {
     });
   }
 
+  /**
+   * Handler: onSelectFile
+   * Triggered when a file is selected.
+   * Loads the image into the state and captures its dimensions.
+   */
   onSelectFile = e => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
@@ -55,14 +71,26 @@ export class IntroExplanation extends Component {
     }
   }
 
+  /**
+   * Handler: onCropChange
+   * Updates crop dimensions in state on change.
+   */
   onCropChange = crop => {
     this.setState({ crop });
   }
 
+  /**
+   * Handler: onCropClicked
+   * Triggers image cropping and passes base64 output to parent.
+   */
   onCropClicked = () => {
     this.getCroppedImg(this.state.image, this.state.crop);
   }
 
+  /**
+   * Utility: getCroppedImg
+   * Draws cropped image onto a canvas and passes the base64 string to parent component.
+   */
   getCroppedImg(image, pixelCrop) {
     // Print crops to canvas
     const canvas = document.createElement('canvas');
@@ -89,6 +117,10 @@ export class IntroExplanation extends Component {
     this.props.setCroppedImage(base64Image);
   }
 
+  /**
+   * Render: IntroExplanation
+   * Contains introduction, image upload & crop UI, and explanation text.
+   */
   render() {
     return (
       <div>
@@ -146,6 +178,10 @@ export class IntroExplanation extends Component {
   }
 }
 
+/**
+ * Component: CAMExplanation
+ * Description: Placeholder component for Class Activation Map (CAM) explanation.
+ */
 export class CAMExplanation extends Component {
   constructor(props) {
     super(props);
